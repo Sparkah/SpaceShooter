@@ -9,6 +9,11 @@ public class LaserBeamGun : MonoBehaviour
 
     private Transform Player;
 
+    private void Awake()
+    {
+        PlayerLogicMain.laserBeamGun = this;
+    }
+
     private void Start()
     {
         Player = GetComponentInParent<Transform>();

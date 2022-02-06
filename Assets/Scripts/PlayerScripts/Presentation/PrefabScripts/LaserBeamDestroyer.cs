@@ -6,10 +6,12 @@ public class LaserBeamDestroyer : MonoBehaviour
     private float time = 2;
     private float timeSinceStart = 0;
 
-    void FixedUpdate()
+    void Update()
     {
-            timeSinceStart += Time.deltaTime;
-            if (timeSinceStart > time)
-                Destroy(gameObject);
+        timeSinceStart += Time.deltaTime;
+        if (timeSinceStart > time)
+        {
+            Destroy(gameObject);
+        }
     }
 }

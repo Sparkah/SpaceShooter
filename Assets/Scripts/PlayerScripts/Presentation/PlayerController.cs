@@ -4,30 +4,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private float speed = MainLogic.speed;
+    private float speed = PlayerLogicMain.speed;
     [SerializeField]
-    private float acceleration = MainLogic.acceleration;
+    private float acceleration = PlayerLogicMain.acceleration;
     [SerializeField]
-    private float maxSpeed = MainLogic.maxSpeed;
+    private float maxSpeed = PlayerLogicMain.maxSpeed;
     [SerializeField]
-    private float decelerationSmooth = MainLogic.decelerationSmooth;
+    private float decelerationSmooth = PlayerLogicMain.decelerationSmooth;
     [SerializeField]
-    private float decelerationRate = MainLogic.decelerationRate;
+    private float decelerationRate = PlayerLogicMain.decelerationRate;
     [SerializeField]
-    private float rotateSpeed = MainLogic.rotateSpeed;
+    private float rotateSpeed = PlayerLogicMain.rotateSpeed;
 
-    private bool forward = MainLogic.forward;
-    private bool rotateLeft = MainLogic.rotateLeft;
-    private bool rotateRight = MainLogic.rotateRight;
-
-    private LaserBeamGun laserBeamGun;
-    private BulletGun bulletGun;
-
-    private void Start()
-    {
-        laserBeamGun = GetComponentInChildren<LaserBeamGun>();
-        bulletGun = GetComponentInChildren<BulletGun>();
-    }
+    private bool forward = PlayerLogicMain.forward;
+    private bool rotateLeft = PlayerLogicMain.rotateLeft;
+    private bool rotateRight = PlayerLogicMain.rotateRight;
 
     public void RotateInput()
     {
@@ -74,14 +65,12 @@ public class PlayerController : MonoBehaviour
 
     public void GunShot()
     {
-        if (Mouse.current.leftButton.wasReleasedThisFrame)
-            bulletGun.SpawnFromPool("Bullet", bulletGun.transform.position, bulletGun.transform.rotation);
+        PlayerLogicMain.GunShot();
     }
 
     public void LaserShot()
     {
-        if (Mouse.current.rightButton.wasReleasedThisFrame)
-            laserBeamGun.ShootLaser();
+        PlayerLogicMain.LaserShot();
     }
 
     IEnumerator Decelerate()

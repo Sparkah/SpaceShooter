@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4908910955518332315}
   m_Layer: 0
   m_Name: GunBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,9 +134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 5678978712657471450}
-  AsteroidSmall: {fileID: 251269581960412656, guid: 4e1fbee8327f3435da99271edf5af396, type: 3}
-  AsteroidMedium: {fileID: 6306848111855749052, guid: 511bb1dfe88d046c7a1ad05b6179f8a6, type: 3}
-  AsteroidBig: {fileID: 4370874408170191980, guid: 37c238ffe5a1745389367a14bab51326, type: 3}
 --- !u!58 &4908910955518332315
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -11,17 +11,20 @@ public class BulletGun : MonoBehaviour
         public int bulletAmount;
     }
 
-    //private Transform Player;
     public List<Pool> pools;
 
     [SerializeField]
     private float bulletSpeed;
 
-    public Dictionary<string, Queue<GameObject>> poolDictionary;
+
+    private void Awake()
+    {
+        PlayerLogicMain.bulletGun = this;
+    }
 
     private void Start()
     {
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+        PlayerLogicMain.poolDictionary = new Dictionary<string, Queue<GameObject>>();
         foreach(Pool pool in pools)
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
@@ -33,24 +36,7 @@ public class BulletGun : MonoBehaviour
                 objectPool.Enqueue(Bullet);
             }
 
-            poolDictionary.Add(pool.tag, objectPool);
+            PlayerLogicMain.poolDictionary.Add(pool.tag, objectPool);
         }
-    }
-
-    public GameObject SpawnFromPool (string tag, Vector3 position, Quaternion rotation)
-    {
-        if(!poolDictionary.ContainsKey(tag))
-        {
-            Debug.Log(tag + " не существует");
-            return null;
-        }
-
-        GameObject Bullet = poolDictionary[tag].Dequeue();
-        Bullet.SetActive(true);
-        Bullet.transform.SetPositionAndRotation(position, rotation);
-
-        poolDictionary[tag].Enqueue(Bullet);
-
-        return Bullet;
     }
 }

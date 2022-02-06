@@ -9,8 +9,11 @@ public class ColliderDestroyer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
-        UIManager.Instance.ScoreCounter();
+        if (!collision.CompareTag("Laser") && !collision.CompareTag("Bullet") && !collision.CompareTag("Player"))
+        {
+            Destroy(collision.gameObject);
+            UIManager.Instance.ScoreCounter();
+        }
         if(Bullet!=null)
         {
             gameObject.SetActive(false);
